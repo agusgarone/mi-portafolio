@@ -17,5 +17,19 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tiempo {
+  @apply z-10 text-xs font-semibold uppercase tracking-wide text-slate-500;
+}
+
+.titulo {
+  @apply font-medium text-base leading-tight;
+}
+.descripcion {
+  @apply mt-2 text-sm leading-normal;
+}
+
+.tecnologia {
+  @apply text-xs font-medium leading-5 text-teal-300;
 }
