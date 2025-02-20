@@ -5,6 +5,7 @@ import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("");
@@ -64,12 +65,13 @@ export default function Home() {
               {["sobre-mi", "habilidades", "proyectos"].map((section) => (
                 <li
                   key={section}
-                  className="relative flex flex-row items-center"
+                  className="relative flex flex-row items-center group"
                 >
                   <motion.div
                     className="w-full h-[3px] bg-green-400 rounded-full"
                     layoutId="underline"
                     initial={{ width: "5%" }}
+                    whileHover={{ width: "15%" }}
                     animate={{
                       width: activeSection === section ? "15%" : "5%",
                     }}
@@ -77,7 +79,7 @@ export default function Home() {
                   />
                   <Link
                     href={`#${section}`}
-                    className={`relative px-3 py-1 transition-all duration-300 ${
+                    className={`relative px-3 py-1 transition-all duration-300 group-hover:text-green-400 ${
                       activeSection === section
                         ? "text-green-400 font-bold"
                         : "text-white"
@@ -91,9 +93,30 @@ export default function Home() {
           </nav>
         </section>
         <section id="contacto" className="flex flex-row gap-6 justify-start">
-          <p className="text-lg">🔹 github</p>
-          <p className="text-lg">🔹 linkedin</p>
-          <p className="text-lg">🔹 gmail</p>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
+          >
+            <Github />
+          </a>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
+          >
+            <Linkedin />
+          </a>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
+          >
+            <Mail />
+          </a>
         </section>
       </div>
 
@@ -146,18 +169,24 @@ export default function Home() {
           />
 
           <Link
-            href={`www.google.com`}
-            className={
-              "relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
-            }
+            href="https://example.com"
+            className="group/link font-bold hover:text-green-400 flex"
           >
             Ver CV completo
+            <span
+              className="inline-block h-4 w-4 shrink-0 transition-transform 
+                group-hover/link:-translate-y-1 group-hover/link:translate-x-1 
+                group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 
+                motion-reduce:transition-none ml-1 translate-y-px"
+            >
+              <ArrowUpRight />
+            </span>
           </Link>
         </section>
         <section
           ref={proyectosRef}
           id="proyectos"
-          className="h-4/5 flex flex-col items-start gap-8"
+          className="h-full flex flex-col items-start gap-8"
         >
           <ProjectCard
             projectTitle="Cart Wise Shop"
