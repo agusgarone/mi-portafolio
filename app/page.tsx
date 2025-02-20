@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
+import ExperienceCard from "./components/ExperienceCard";
+import ProjectCard from "./components/ProjectCard";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("");
@@ -127,44 +129,56 @@ export default function Home() {
         <section
           ref={habilidadesRef}
           id="habilidades"
-          className="h-4/5 flex flex-col items-start"
+          className="h-3/5 flex flex-col items-start gap-8"
         >
-          <motion.div
-            className="relative w-full max-w-lg flex flex-row p-4 border border-gray-700 bg-gray-800 rounded-lg shadow-md transition-all duration-300 gap-10"
-            whileHover={{
-              scale: 1.05, // Se agranda ligeramente
-              boxShadow: "0px 10px 30px rgba(0, 255, 150, 0.2)", // Sombra verde
-              borderColor: "#00ff96", // Borde verde
-              backgroundColor: "#1f2937",
-            }}
+          <ExperienceCard
+            time="2021-presente"
+            titleRole="Desarrollador Front-end en Bewise"
+            descriptionRole="Explicación del puesto"
+            technologies={["React.js", "React Native"]}
+          />
+
+          <ExperienceCard
+            time="2021-presente"
+            titleRole="Desarrollador Front-end en Bewise"
+            descriptionRole="Explicación del puesto"
+            technologies={["React.js", "React Native"]}
+          />
+
+          <Link
+            href={`www.google.com`}
+            className={
+              "relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
+            }
           >
-            <div id="tiempo-del-puesto">
-              <p className="tiempo">2021-presente</p>
-            </div>
-            <div
-              id="informacion-sobre-el-puesto"
-              className="flex flex-col gap-2"
-            >
-              <div id="puesto" className="titulo">
-                <p>Desarrollador Front-end en Bewise</p>
-              </div>
-              <div id="explicacion-del-puesto" className="descripcion">
-                <p>Explicacion del puesto</p>
-              </div>
-              <div id="stack-tecnologico-del-puesto">
-                <p className="tecnologia">Tecnologias que se usan</p>
-              </div>
-            </div>
-          </motion.div>
-          {/* <div id="Card" className="w-full flex flex-row p-4 rounded-l gap-10"> */}
-          {/* </div> */}
+            Ver CV completo
+          </Link>
         </section>
         <section
           ref={proyectosRef}
           id="proyectos"
-          className="h-4/5 w-4/6 flex items-center"
+          className="h-4/5 flex flex-col items-start gap-8"
         >
-          <p className="text-lg">🔹 Sección 3: Tus proyectos</p>
+          <ProjectCard
+            projectTitle="Cart Wise Shop"
+            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
+            technologies={["React Native", "Supabase"]}
+          />
+          <ProjectCard
+            projectTitle="Cart Wise Shop"
+            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
+            technologies={["React Native", "Supabase"]}
+          />
+          <ProjectCard
+            projectTitle="Cart Wise Shop"
+            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
+            technologies={["React Native", "Supabase"]}
+          />
+          <ProjectCard
+            projectTitle="Cart Wise Shop"
+            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
+            technologies={["React Native", "Supabase"]}
+          />
         </section>
       </div>
     </div>
