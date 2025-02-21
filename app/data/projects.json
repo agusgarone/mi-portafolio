@@ -1,0 +1,34 @@
+[
+  {
+    "title": "Cart Wise Shop",
+    "description": "Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa.",
+    "imageUrl": "/images/ecommerce.jpg",
+    "url": "https://github.com/agusgarone/cartWiseShop",
+    "technologies": ["React Native", "Supabase", "TypeScript"],
+    "isInProgress": false
+  },
+  {
+    "title": "Spotify interface",
+    "description": "Maquetación de pagina principal de la Aplicación Spotify.",
+    "imageUrl": "/images/dashboard.jpg",
+    "url": "https://github.com/agusgarone/interface-spotify",
+    "technologies": ["Dart"],
+    "isInProgress": false
+  },
+  {
+    "title": "Dashboard de métricas",
+    "description": "Implementé un dashboard interactivo con gráficos y datos en tiempo real.",
+    "imageUrl": "/images/dashboard.jpg",
+    "url": "https://github.com/agusgarone",
+    "technologies": ["React.js", "Tailwind", "Supabase"],
+    "isInProgress": true
+  },
+  {
+    "title": "Flite-Shop",
+    "description": "E-commerce de bufandas con carrito e integracion de Mercado Pago.",
+    "imageUrl": "/images/dashboard.jpg",
+    "url": "https://github.com/agusgarone",
+    "technologies": ["Next.js", "TypeScript", "Stripe"],
+    "isInProgress": true
+  }
+]

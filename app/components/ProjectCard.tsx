@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
+import { Loader } from "lucide-react";
 
 type ProjectCardProps = {
   projectTitle: string;
   projectDescription: string;
   technologies: string[];
+  url: string;
+  isInProgress: boolean;
 };
 
 export default function ProjectCard({
   projectTitle,
   projectDescription,
   technologies,
+  isInProgress,
+  url,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -21,13 +26,33 @@ export default function ProjectCard({
         backgroundColor: "#1f2937",
       }}
     >
-      <div id="tiempo-del-puesto">
-        <p className="tiempo">imagen</p>
-        {/* <image /> */}
-      </div>
+      {isInProgress && (
+        <motion.div
+          className="absolute top-4 right-4 flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          <motion.span
+            className="text-sm font-semibold"
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            En progreso
+          </motion.span>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          >
+            <Loader className="w-5 h-5 text-green-400" />
+          </motion.div>
+        </motion.div>
+      )}
       <div id="informacion-sobre-el-puesto" className="flex flex-col gap-2">
         <div id="puesto" className="titulo">
-          <p>{projectTitle}</p>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {projectTitle}
+          </a>
         </div>
         <div id="explicacion-del-puesto" className="descripcion">
           <p>{projectDescription}</p>

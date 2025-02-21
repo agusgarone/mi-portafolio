@@ -15,7 +15,7 @@ export default function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <motion.div
-      className="relative w-full max-w-lg flex flex-row p-4 border border-gray-700 bg-gray-800 rounded-lg shadow-md transition-all duration-300 gap-10"
+      className="relative w-full max-w-lg flex flex-row p-4 border border-gray-700 bg-gray-800 rounded-lg shadow-md transition-all duration-300 gap-4"
       whileHover={{
         scale: 1.05,
         boxShadow: "0px 10px 30px rgba(0, 255, 150, 0.2)",
@@ -23,10 +23,13 @@ export default function ExperienceCard({
         backgroundColor: "#1f2937",
       }}
     >
-      <div id="tiempo-del-puesto">
+      <div id="tiempo-del-puesto" className="flex-1">
         <p className="tiempo">{time}</p>
       </div>
-      <div id="informacion-sobre-el-puesto" className="flex flex-col gap-2">
+      <div
+        id="informacion-sobre-el-puesto"
+        className="flex flex-[4] flex-col gap-2"
+      >
         <div id="puesto" className="titulo">
           <p>{titleRole}</p>
         </div>

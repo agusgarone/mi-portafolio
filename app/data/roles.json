@@ -1,0 +1,30 @@
+[
+  {
+    "titleRole": "Desarrollador React Native",
+    "company": "Empresa XYZ",
+    "time": "2023 - Presente",
+    "descriptionRole": "Construí aplicaciones móviles con React Native para mejorar el rendimiento y la experiencia de usuario.",
+    "technologies": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Firebase",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "titleRole": "Desarrollador React.js",
+    "company": "Startup ABC",
+    "time": "2021 - 2023",
+    "descriptionRole": "Desarrollé e hice mantenimeinto de aplicaciones web con React y Next.js optimizando el rendimiento.",
+    "technologies": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "SASS",
+      "Webpack",
+      "Supabase"
+    ]
+  }
+]

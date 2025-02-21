@@ -33,3 +33,7 @@ body {
 .tecnologia {
   @apply text-xs font-medium leading-5 text-teal-300;
 }
+
+/* .prueba {
+  cursor: url("public/aaaj.png"), auto;
+} */

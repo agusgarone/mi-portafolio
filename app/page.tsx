@@ -6,6 +6,8 @@ import Link from "next/link";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
 import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { Role } from "./models/role";
+import { Project } from "./models/project";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("");
@@ -15,15 +17,16 @@ export default function Home() {
   const smoothX = useSpring(mouseX, { stiffness: 200, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 200, damping: 20 });
 
-  // Referencias para cada sección
   const sobreMiRef = useRef(null);
   const habilidadesRef = useRef(null);
   const proyectosRef = useRef(null);
 
-  // Detectar cuándo una sección está visible
   const isSobreMiInView = useInView(sobreMiRef, { amount: 0.6 });
   const isHabilidadesInView = useInView(habilidadesRef, { amount: 0.6 });
   const isProyectosInView = useInView(proyectosRef, { amount: 0.6 });
+
+  const [roles, setRoles] = useState<Role[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
     if (isSobreMiInView) setActiveSection("sobre-mi");
@@ -31,7 +34,14 @@ export default function Home() {
     else if (isProyectosInView) setActiveSection("proyectos");
   }, [isSobreMiInView, isHabilidadesInView, isProyectosInView]);
 
-  useEffect(() => {});
+  useEffect(() => {
+    fetch("/api/roles")
+      .then((res) => res.json())
+      .then((data) => setRoles(data));
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -94,7 +104,7 @@ export default function Home() {
         </section>
         <section id="contacto" className="flex flex-row gap-6 justify-start">
           <a
-            href="https://google.com"
+            href="https://github.com/agusgarone"
             target="_blank"
             rel="noopener noreferrer"
             className="relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
@@ -102,7 +112,7 @@ export default function Home() {
             <Github />
           </a>
           <a
-            href="https://google.com"
+            href="https://www.linkedin.com/in/agustin-garone/"
             target="_blank"
             rel="noopener noreferrer"
             className="relative py-1 transition-all duration-300 font-bold text-white hover:text-green-400"
@@ -124,19 +134,19 @@ export default function Home() {
         <section
           ref={sobreMiRef}
           id="sobre-mi"
-          className="h-4/5 w-4/6 flex flex-col pt-24 mb-5"
+          className="h-4/6 w-4/6 flex flex-col pt-24 mb-5"
         >
           <p className="text-lg">
             Soy un desarrollador apasionado por la creación de interfaces de
             usuario accesibles y perfectas en píxeles que combinan un diseño
             bien pensado con una ingeniería sólida. Mi trabajo favorito se
-            encuentra en la intersección del diseño y el desarrollo, creando
+            encuentra en la combinacón del diseño y el desarrollo, creando
             experiencias que no sólo se ven muy bien, sino que están
             meticulosamente construidas para el rendimiento y la usabilidad.
           </p>
           <br />
           <p className="text-lg">
-            Actualmente, soy Ingeniero Semi Senior Front-End en Bewise.
+            Actualmente, soy Desarrollador Semi Senior Front-End en Bewise.
             Contribuyo a la creación y mantenimiento de componentes de interfaz
             de usuario que potencian el front-end de los proyectos en los que
             participo, asegurando que cada aplicacion cumpla con los estándares
@@ -146,30 +156,33 @@ export default function Home() {
           <br />
           <p className="text-lg">
             En mi tiempo libre, suelo estar corriendo, en gimnasio, jugando o
-            mirando futbol apoyando a mi equipo Argentinos Juniors.
+            mirando a mi equipo{" "}
+            <motion.span
+              className="w-fit duration-200"
+              whileHover={{ color: "red" }}
+            >
+              Argentinos Juniors.
+            </motion.span>
           </p>
         </section>
         <section
           ref={habilidadesRef}
           id="habilidades"
-          className="h-3/5 flex flex-col items-start gap-8"
+          className="h-3/5 flex flex-col items-start gap-8 pt-20"
         >
-          <ExperienceCard
-            time="2021-presente"
-            titleRole="Desarrollador Front-end en Bewise"
-            descriptionRole="Explicación del puesto"
-            technologies={["React.js", "React Native"]}
-          />
-
-          <ExperienceCard
-            time="2021-presente"
-            titleRole="Desarrollador Front-end en Bewise"
-            descriptionRole="Explicación del puesto"
-            technologies={["React.js", "React Native"]}
-          />
-
+          {roles.map((role, index) => (
+            <ExperienceCard
+              key={index}
+              time={role.time}
+              titleRole={role.titleRole}
+              descriptionRole={role.descriptionRole}
+              technologies={role.technologies}
+            />
+          ))}
           <Link
-            href="https://example.com"
+            href="/Agustin-ES.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group/link font-bold hover:text-green-400 flex"
           >
             Ver CV completo
@@ -186,28 +199,18 @@ export default function Home() {
         <section
           ref={proyectosRef}
           id="proyectos"
-          className="h-full flex flex-col items-start gap-8"
+          className="h-5/6 flex flex-col items-start gap-8 pt-28"
         >
-          <ProjectCard
-            projectTitle="Cart Wise Shop"
-            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
-            technologies={["React Native", "Supabase"]}
-          />
-          <ProjectCard
-            projectTitle="Cart Wise Shop"
-            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
-            technologies={["React Native", "Supabase"]}
-          />
-          <ProjectCard
-            projectTitle="Cart Wise Shop"
-            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
-            technologies={["React Native", "Supabase"]}
-          />
-          <ProjectCard
-            projectTitle="Cart Wise Shop"
-            projectDescription="Aplicación mobile para crear tus listas de compras y nunca olvidarte de los productos faltantes en tu casa."
-            technologies={["React Native", "Supabase"]}
-          />
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              projectTitle={project.title}
+              projectDescription={project.description}
+              technologies={project.technologies}
+              url={project.url}
+              isInProgress={project.isInProgress}
+            />
+          ))}
         </section>
       </div>
     </div>
