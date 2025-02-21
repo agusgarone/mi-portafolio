@@ -54,15 +54,15 @@ export default function Home() {
   }, [mouseX, mouseY]);
 
   return (
-    <div className="flex h-screen bg-gray-900 text-white">
+    <div className="flex flex-col lg:flex-row lg:h-screen bg-gray-900 text-white">
       <motion.div
         className="fixed w-32 h-32 bg-green-400 rounded-full opacity-30 pointer-events-none filter blur-3xl"
         style={{ x: smoothX, y: smoothY }}
         animate={{ x: smoothX.get() - 64, y: smoothY.get() - 64 }}
       />
-      <div className="w-1/2 h-screen flex flex-col justify-between items-center p-24">
+      <div className="h-1/4 lg:w-1/2 lg:h-screen flex flex-col gap-16 lg:justify-between items-center pt-24 px-11 lg:p-24">
         <section id="presentacion" className="flex flex-col gap-24">
-          <div className="text-start">
+          <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold text-green-400">
               Agustín Garone
             </h1>
@@ -70,7 +70,7 @@ export default function Home() {
               Desarrollador Frontend & Mobile | React.js | React Native
             </p>
           </div>
-          <nav className="right-0 p-4 z-10">
+          <nav className="hidden lg:block right-0 p-4 z-10">
             <ul className="flex justify-center text-lg flex-col gap-6">
               {["sobre-mi", "habilidades", "proyectos"].map((section) => (
                 <li
@@ -130,13 +130,13 @@ export default function Home() {
         </section>
       </div>
 
-      <div className="w-1/2 h-screen overflow-y-auto scroll-smooth pl-12">
+      <div className="p-16 h-full lg:w-1/2 lg:flex lg:flex-col overflow-y-auto scroll-smooth lg:pl-12 gap-14">
         <section
           ref={sobreMiRef}
           id="sobre-mi"
-          className="h-4/6 w-4/6 flex flex-col pt-24 mb-5"
+          className="flex flex-col pt-12 text-center lg:text-left lg:max-w-3xl"
         >
-          <p className="text-lg">
+          <p className="lg:text-lg text-md">
             Soy un desarrollador apasionado por la creación de interfaces de
             usuario accesibles y perfectas en píxeles que combinan un diseño
             bien pensado con una ingeniería sólida. Mi trabajo favorito se
@@ -145,7 +145,7 @@ export default function Home() {
             meticulosamente construidas para el rendimiento y la usabilidad.
           </p>
           <br />
-          <p className="text-lg">
+          <p className="lg:text-lg text-md">
             Actualmente, soy Desarrollador Semi Senior Front-End en Bewise.
             Contribuyo a la creación y mantenimiento de componentes de interfaz
             de usuario que potencian el front-end de los proyectos en los que
@@ -154,7 +154,7 @@ export default function Home() {
             experiencia de usuario inclusiva.
           </p>
           <br />
-          <p className="text-lg">
+          <p className="lg:text-lg text-md">
             En mi tiempo libre, suelo estar corriendo, en gimnasio, jugando o
             mirando a mi equipo{" "}
             <motion.span
@@ -168,7 +168,7 @@ export default function Home() {
         <section
           ref={habilidadesRef}
           id="habilidades"
-          className="h-3/5 flex flex-col items-start gap-8 pt-20"
+          className="flex flex-col items-start gap-8 pt-20"
         >
           {roles.map((role, index) => (
             <ExperienceCard
@@ -199,7 +199,7 @@ export default function Home() {
         <section
           ref={proyectosRef}
           id="proyectos"
-          className="h-5/6 flex flex-col items-start gap-8 pt-28"
+          className="flex flex-col items-start gap-8 pt-8"
         >
           {projects.map((project, index) => (
             <ProjectCard
